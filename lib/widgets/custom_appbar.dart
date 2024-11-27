@@ -40,6 +40,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 ),
               ],
             ),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

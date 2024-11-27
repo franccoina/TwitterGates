@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PostDetailPage extends StatelessWidget {
-  final String urlImage;
+  final String? urlImage;
+  final String urlAvatar;
   final String user;
   final String username;
   final String description;
@@ -9,7 +10,8 @@ class PostDetailPage extends StatelessWidget {
 
   const PostDetailPage({
     super.key,
-    required this.urlImage,
+    this.urlImage,
+    required this.urlAvatar,
     required this.user,
     required this.username,
     required this.description,
@@ -40,14 +42,16 @@ class PostDetailPage extends StatelessWidget {
                   children: [
                     // Avatar similar al de Twitter
                     CircleAvatar(
-                      backgroundColor: Colors.blueGrey,
-                      radius: 20,
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 18,
+                        radius: 15,
+                        backgroundImage: urlAvatar.isNotEmpty
+                            ? NetworkImage(urlAvatar)
+                            : null,
+                        backgroundColor: Colors.grey[400],
+                        child: urlAvatar.isEmpty
+                            ? const Icon(Icons.person,
+                                size: 15, color: Colors.white)
+                            : null,
                       ),
-                    ),
                     const SizedBox(width: 12),
                     // Título del post (nombre del usuario)
                     Text(
