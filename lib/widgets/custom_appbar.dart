@@ -1,57 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_gates/views/dashboard.dart';
-import 'package:twitter_gates/views/detail_card.dart';
 
 class CustomAppBar extends StatefulWidget {
-  const CustomAppBar({super.key});
+  final ValueChanged<int> onTabSelected;
+
+  const CustomAppBar({super.key, required this.onTabSelected});
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-  int _currentIndex = 0; // Índice de la sección activa
-
-  final List<Widget> _pages = [
-    const Dashboard(), // Sección "Para ti"
-    const DetailCard(), // Sección "Siguiendo"
-  ];
+  int _currentIndex = 0; // Índice de la pestaña activa
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          // Navbar fijo en la parte superior
-          Container(
-            color: Colors.black,
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Container(
+        color: Colors.black,
+        padding: const EdgeInsets.only(bottom: 5, top: 30, right: 20, left: 20),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildNavItem('Para ti', index: 0),
-                _buildNavItem('Siguiendo', index: 1),
+                const CircleAvatar(
+                  radius: 15,
+                  backgroundImage: NetworkImage(
+                      'https://images.pexels.com/photos/4842566/pexels-photo-4842566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+                  backgroundColor: Colors.transparent,
+                ),
+                Center(
+                  child: Image.network(
+                      "https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_%28white%29.png",
+                      height: 25,
+                      fit: BoxFit.contain),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.settings, color: Colors.white),
+                  onPressed: () {},
+                ),
               ],
             ),
-          ),
-          // Contenido dinámico según la sección activa
-          Expanded(
-            child: _pages[_currentIndex],
-          ),
-        ],
-      ),
-    );
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildNavItem('Para ti', 0),
+                _buildNavItem('Siguiendo', 1),
+              ],
+            ),
+          ],
+        ));
   }
 
-  // Construye cada enlace del navbar
-  Widget _buildNavItem(String label, {required int index}) {
+  Widget _buildNavItem(String label, int index) {
     final bool isActive = _currentIndex == index;
+
     return GestureDetector(
       onTap: () {
         setState(() {
-          _currentIndex = index; 
+          _currentIndex = index;
         });
+        widget.onTabSelected(index);
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -68,7 +76,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           Container(
             height: 3,
             width: 60,
-            color: isActive ? Colors.blue : Colors.transparent, // Borde azul si está activo
+            color: isActive ? Colors.blue : Colors.transparent,
           ),
         ],
       ),

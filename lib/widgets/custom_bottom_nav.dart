@@ -1,6 +1,7 @@
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:twitter_gates/views/dashboard.dart';
+import 'package:twitter_gates/views/home_page.dart';
+import 'package:twitter_gates/views/other_page.dart';
 
 class CustomBottomNav extends StatefulWidget {
   const CustomBottomNav({super.key});
@@ -20,15 +21,15 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
     if (index == 0) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Dashboard()),
+        MaterialPageRoute(builder: (context) => const HomePage()),
       );
     }
-    // else if (index == 1) {
-    //   Navigator.push(
-    //     context,
-    //     MaterialPageRoute(builder: (context) =>),
-    //   );
-    // }
+    else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const OtherPage()),
+      );
+    }
   }
 
   @override
@@ -53,7 +54,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
         ),
 
         SalomonBottomBarItem(
-          icon: const Icon(Icons.crop_square_rounded),
+          icon: const Icon(Icons.browser_not_supported),
           title: const Text(""),
           selectedColor: Colors.white,
           unselectedColor: Colors.grey,
@@ -83,3 +84,5 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
     );
   }
 }
+
+
