@@ -24,8 +24,7 @@ This project serves as a practical learning environment focused on modern mobile
 ## Resources
 
 1. Link to documentation folder on Google Drive:
-https://drive.google.com/drive/folders/1yplopAM70kg2sb7EglHYddhbLjsxP6l
-4?usp=sharing
+https://drive.google.com/drive/folders/1yplopAM70kg2sb7EglHYddhbLjsxP6l4?usp=sharing
 
 2. Link to GitHub repository:
 https://github.com/franccoina/TwitterGates
