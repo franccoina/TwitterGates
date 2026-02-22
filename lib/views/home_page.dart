@@ -22,32 +22,30 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          CustomAppBar(
-            onTabSelected: (index) {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-          ),
-          Expanded(
-            child: _pages[_currentIndex],
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.blue,
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
+        backgroundColor: Colors.black,
+        body: Column(
+          children: [
+            CustomAppBar(
+              onTabSelected: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+            ),
+            Expanded(
+              child: _pages[_currentIndex],
+            ),
+          ],
         ),
-        child: const Icon(Icons.add, color: Colors.white, size: 30),
-      ),
-      bottomNavigationBar: const CustomBottomNav()
-    );
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.blue,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+          child: const Icon(Icons.add, color: Colors.white, size: 30),
+        ),
+        bottomNavigationBar: const CustomBottomNav());
   }
 }
-
