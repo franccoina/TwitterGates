@@ -42,16 +42,15 @@ class PostDetailPage extends StatelessWidget {
                   children: [
                     // Avatar similar al de Twitter
                     CircleAvatar(
-                        radius: 15,
-                        backgroundImage: urlAvatar.isNotEmpty
-                            ? NetworkImage(urlAvatar)
-                            : null,
-                        backgroundColor: Colors.grey[400],
-                        child: urlAvatar.isEmpty
-                            ? const Icon(Icons.person,
-                                size: 15, color: Colors.white)
-                            : null,
-                      ),
+                      radius: 15,
+                      backgroundImage:
+                          urlAvatar.isNotEmpty ? NetworkImage(urlAvatar) : null,
+                      backgroundColor: Colors.grey[400],
+                      child: urlAvatar.isEmpty
+                          ? const Icon(Icons.person,
+                              size: 15, color: Colors.white)
+                          : null,
+                    ),
                     const SizedBox(width: 12),
                     // Título del post (nombre del usuario)
                     Text(

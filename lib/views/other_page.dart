@@ -15,29 +15,27 @@ class _OtherPageState extends State<OtherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          CustomAppBar(
-            onTabSelected: (index) {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.blue,
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
+        backgroundColor: Colors.black,
+        body: Column(
+          children: [
+            CustomAppBar(
+              onTabSelected: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+            ),
+          ],
         ),
-        child: const Icon(Icons.add, color: Colors.white, size: 30),
-      ),
-      bottomNavigationBar: const CustomBottomNav()
-    );
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.blue,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+          child: const Icon(Icons.add, color: Colors.white, size: 30),
+        ),
+        bottomNavigationBar: const CustomBottomNav());
   }
 }
-
